@@ -18,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -47,7 +46,7 @@ public class GUIBinary extends Application {
             clickSend(tf, tfResult);
         });
         tfResult.setText(getBinaryValues().toString());
-        Scene scene = new Scene(setUpGui(), 250, 220);
+        Scene scene = new Scene(setUpGui(), 270, 240);
         scene.getStylesheets().add(new File("styleButtons.css").toURI().toString());
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(scene);
@@ -114,6 +113,8 @@ public class GUIBinary extends Application {
         tfResult.setPrefHeight(90);
         tfResult.setPrefWidth(200);
         pane.setCenter(grid);
+        grid.setTranslateX(20);
+        grid.setTranslateY(20);
         //This will put a delimiter on the TextArea
         tf.setWrapText(true);
         tfResult.setWrapText(true);
