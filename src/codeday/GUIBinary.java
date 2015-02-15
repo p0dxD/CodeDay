@@ -133,20 +133,25 @@ private static String musicPath = "file: ../../audio/";
      * This method just searches a path and plays a song
      */
 public void testMusic(){
-        AudioClip hit = new AudioClip(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
+        //AudioClip hit = new AudioClip(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
         //AudioClip hitTwo = new AudioClip(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav").toURI().toString());
         Media hitTwo = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav").toURI().toString());
+        Media hit = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
         //MediaPlayer mediaPlayer = new MediaPlayer(hit);
         MediaPlayer mediaPlayerTwo = new MediaPlayer(hitTwo);
+        MediaPlayer mediaPlayer = new MediaPlayer(hitTwo);
         int count = 0;
-        while( count < 10){
-        count++;
+        //while( count < 10){
+        //count++;
+        mediaPlayerTwo.rateProperty().setValue(3);
         mediaPlayerTwo.play();
-        mediaPlayerTwo.rateProperty().setValue(8);
 
        new Timeline(new KeyFrame(
-        Duration.millis(1000),
-        ae -> hit.play()
+        Duration.millis(1500),
+        ae -> {
+            //.rateProperty().setValue(8);
+            mediaPlayer.play();
+        }
        ))
     .play();
        
@@ -155,7 +160,7 @@ public void testMusic(){
         
         //mediaPlayerTwo.play();
         
-        }
+        //}
         //mediaPlayer.stop();
 }
     /**
