@@ -1,6 +1,7 @@
 package codeday;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -10,6 +11,7 @@ import java.util.StringTokenizer;
  * @author Joseph
  */
 public class BinaryConverter {
+private static String musicPath = "file: ../../audio/";
 private static int number;
 private static int numberOnes = 0;
 private static int numberZeros = 0;
@@ -115,10 +117,12 @@ private static ArrayList<Integer> binary = new ArrayList<>();
     /**
      * This is the main method that will split the binary depending on size
      * breaking will be fixated on the following 
+     * @param array
      */
-    private void split(ArrayList<Integer> array){
-        if(array.size()< 20&&array.isEmpty()){
+    public static void split(ArrayList<Integer> array){
+        if(array.size()< 20&&!array.isEmpty()){
             System.out.println("Small sentence");
+            System.out.println("First Two: "+breakTwoBits(array));
         }else if(array.size()> 20 && array.size()<100){
             System.out.println("Mid sentence");
         }else if(array.size()>100&& array.size()<200){
@@ -128,4 +132,49 @@ private static ArrayList<Integer> binary = new ArrayList<>();
             System.out.println("No input");
         }
     }
+    /**
+     * This method breaks the binary list into appropiate for usage
+     * @return 
+     */
+    private static String breakTwoBits(ArrayList<Integer> array){
+        ArrayList<String> list = new ArrayList<>();
+        Iterator<Integer> it = array.iterator();
+        while(it.hasNext()){
+            Integer element = it.next();
+            Integer elementTwo = it.next();
+            list.add(String.valueOf(element+""+elementTwo));
+        }
+        //This will play for the first one
+        for(int i = 0; i < list.size();i++){
+            switch(list.get(i)){
+                case "00":
+                    System.out.println("Inside 00");
+                    break;
+                case "01":
+                    System.out.println("Inside 01");
+                    
+                    break;
+                case "10":
+                    System.out.println("Inside 10");
+                    
+                    break;
+                case "11":
+                    System.out.println("Inside 11");
+                    
+                    break;
+                default:
+                    System.out.println("Something went wrong");
+                    break;
+                    
+            }
+        }
+        return list.get(3);
+    }
+    //private int breakThreeBits(ArrayList<Integer> array){
+        
+    //}
+    
+    //private int breakFourBits(ArrayList<Integer> array){
+        
+    //}
 }

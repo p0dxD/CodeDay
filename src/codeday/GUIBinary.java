@@ -13,6 +13,8 @@ import static codeday.BinaryConverter.getCountOnes;
 import static codeday.BinaryConverter.getCountZeros;
 import static codeday.BinaryConverter.printbinaryValues;
 import java.io.File;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,15 +23,19 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 /**
  *
  * @author Joseph
  */
 public class GUIBinary extends Application {
-
+private static String musicPath = "file: ../../audio/";
     TextArea tf = new TextArea();
     TextArea tfResult = new TextArea();
     Button btnSend = new Button("Send");
@@ -44,6 +50,8 @@ public class GUIBinary extends Application {
         //clickSend(tf,tfResult);
         btnSend.setOnMouseClicked(e -> {
             clickSend(tf, tfResult);
+            System.out.println("Size: "+getBinaryValues().size());
+            BinaryConverter.split(getBinaryValues());
         });
         tfResult.setText(getBinaryValues().toString());
         Scene scene = new Scene(setUpGui(), 270, 240);
@@ -78,6 +86,7 @@ public class GUIBinary extends Application {
      * @return the pane with all the setup
      */
     public BorderPane setUpGui() {
+        testMusic();
         GridPane grid = new GridPane();
         BorderPane pane = new BorderPane();
         //TextArea test = new TextArea("This is a test");/////////////////////////////////////////////////////////
@@ -120,7 +129,35 @@ public class GUIBinary extends Application {
         tfResult.setWrapText(true);
         return pane;
     }
+    /**
+     * This method just searches a path and plays a song
+     */
+public void testMusic(){
+        AudioClip hit = new AudioClip(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
+        //AudioClip hitTwo = new AudioClip(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav").toURI().toString());
+        Media hitTwo = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav").toURI().toString());
+        //MediaPlayer mediaPlayer = new MediaPlayer(hit);
+        MediaPlayer mediaPlayerTwo = new MediaPlayer(hitTwo);
+        int count = 0;
+        while( count < 10){
+        count++;
+        mediaPlayerTwo.play();
+        mediaPlayerTwo.rateProperty().setValue(8);
 
+       new Timeline(new KeyFrame(
+        Duration.millis(1000),
+        ae -> hit.play()
+       ))
+    .play();
+       
+           // hitTwo.play();
+        
+        
+        //mediaPlayerTwo.play();
+        
+        }
+        //mediaPlayer.stop();
+}
     /**
      * @param args the command line arguments
      */
