@@ -1,9 +1,16 @@
 package codeday;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.Timer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 /**
  * This program will convert any sentence to a binary representation of many
@@ -138,25 +145,38 @@ public class BinaryConverter {
      * @param array
      */
     public static void split(ArrayList<Integer> array) {
-        if (array.size() < 20 && !array.isEmpty()) {
+
+        if (array.size() < 100 && !array.isEmpty()) {
             System.out.println("Small sentence");
             //System.out.println("First Two: "+breakTwoBits(array));
+            //Media hitTwo;
             for (int i = 0; i < breakTwoBits(array).size(); i++) {
+
                 switch (breakTwoBits(array).get(i)) {
                     case "00":
                         System.out.println("Inside 00");
+                        Media hitTwo = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
+                        playSound(hitTwo);                        
+                        
                         break;
                     case "01":
                         System.out.println("Inside 01");
-
+                        Media hitTwo1 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav").toURI().toString());
+                        playSound(hitTwo1);
                         break;
                     case "10":
                         System.out.println("Inside 10");
-
+                        Media hitTwo2 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_3.wav").toURI().toString());
+                        playSound(hitTwo2);
                         break;
                     case "11":
                         System.out.println("Inside 11");
-
+                        Media hitTwo3 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_4.wav").toURI().toString());
+                        playSound(hitTwo3);
                         break;
                     default:
                         System.out.println("Something went wrong");
@@ -164,108 +184,181 @@ public class BinaryConverter {
 
                 }
             }
-        } else if (array.size() > 20 && array.size() < 100) {
-            System.out.println("Mid sentence");
-            for (int i = 0; i < breakThreeBits(array).size(); i++) {
-                switch (breakThreeBits(array).get(i)) {
-                    case "000":
-                        System.out.println("Inside 000");
-                        break;
-                    case "001":
-                        System.out.println("Inside 001");
-
-                        break;
-                    case "010":
-                        System.out.println("Inside 010");
-
-                        break;
-                    case "011":
-                        System.out.println("Inside 011");
-
-                        break;
-                    case "100":
-                        System.out.println("Inside 100");
-
-                        break;
-                    case "101":
-                        System.out.println("Inside 101");
-
-                        break;
-                    case "110":
-                        System.out.println("Inside 110");
-
-                        break;
-                    case "111":
-                        System.out.println("Inside 111");
-
-                        break;
-                    default:
-                        System.out.println("Something went wrong");
-                        break;
-
-                }
-            }            
-        } else if (array.size() > 100 && array.size() < 200) {
+//        } else if (array.size() > 20 && array.size() < 100) {
+//            System.out.println("Mid sentence");
+//            Media hitTwo;
+//            for (int i = 0; i < breakThreeBits(array).size(); i++) {
+//                try {
+//                    Thread.sleep(1500*i/50);
+//                } catch (InterruptedException ex) {
+//                    Logger.getLogger(BinaryConverter.class.getName()).log(Level.SEVERE, null, ex);
+//                }                
+//                switch (breakThreeBits(array).get(i)) {
+//                    case "000":
+//                        System.out.println("Inside 000");
+//                        hitTwo = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+//                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
+//                        playSound(hitTwo);                        
+//                        break;
+//                    case "001":
+//                        System.out.println("Inside 001");
+//                        Media hitTwo2 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+//                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav").toURI().toString());
+//                        playSound(hitTwo2);                        
+//
+//                        break;
+//                    case "010":
+//                        System.out.println("Inside 010");
+//                        Media hitTwo3 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+//                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_3.wav").toURI().toString());
+//                        playSound(hitTwo3);                        
+//
+//                        break;
+//                    case "011":
+//                        System.out.println("Inside 011");
+//                        Media hitTwo4 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+//                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_4.wav").toURI().toString());
+//                        playSound(hitTwo4);                        
+//
+//                        break;
+//                    case "100":
+//                        System.out.println("Inside 100");
+//                        Media hitTwo5 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+//                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_5.wav").toURI().toString());
+//                        playSound(hitTwo5);
+//                        break;
+//                    case "101":
+//                        System.out.println("Inside 101");
+//                        Media hitTwo6 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+//                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_6.wav").toURI().toString());
+//                        playSound(hitTwo6);
+//                        break;
+//                    case "110":
+//                        System.out.println("Inside 110");
+//                        Media hitTwo7 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+//                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_7.wav").toURI().toString());
+//                        playSound(hitTwo7);
+//                        break;
+//                    case "111":
+//                        System.out.println("Inside 111");
+//                        Media hitTwo8 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+//                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_8.wav").toURI().toString());
+//                        playSound(hitTwo8);
+//                        break;
+//                    default:
+//                        System.out.println("Something went wrong");
+//                        break;
+//
+//                }
+//            }
+        } else if (array.size() > 100) {
             System.out.println("Decent sentence");
+            //Media hitTwo;
             for (int i = 0; i < breakFourBits(array).size(); i++) {
+
                 switch (breakFourBits(array).get(i)) {
                     case "0000":
                         System.out.println("Inside 0000");
+                        Media hitTwo = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
+                        playSound(hitTwo);
+                                MediaPlayer mediaPlayerTwo = new MediaPlayer(hitTwo);
+                                mediaPlayerTwo.play();
                         break;
                     case "0001":
                         System.out.println("Inside 0001");
-
+                        Media hitTwo1 = new Media(new File(("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav")).toURI().toString());
+                        playSound(hitTwo1);
                         break;
                     case "0010":
                         System.out.println("Inside 0010");
-
+                        Media hitTwo2 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_3.wav").toURI().toString());
+                        playSound(hitTwo2);
                         break;
                     case "0011":
                         System.out.println("Inside 0011");
-
+                        Media hitTwo3 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_4.wav").toURI().toString());
+                        playSound(hitTwo3);
                         break;
                     case "0100":
                         System.out.println("Inside 0100");
+                        Media hitTwo4 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_5.wav").toURI().toString());
+                        playSound(hitTwo4);                        
                         break;
                     case "0101":
                         System.out.println("Inside 0101");
+                        Media hitTwo5 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_6.wav").toURI().toString());
+                        playSound(hitTwo5);                        
                         break;
                     case "0110":
                         System.out.println("Inside 0110");
+                        Media hitTwo6 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_7.wav").toURI().toString());
+                        playSound(hitTwo6);                        
                         break;
                     case "0111":
                         System.out.println("Inside 0111");
+                        Media hitTwo7 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_8.wav").toURI().toString());
+                        playSound(hitTwo7);
                         break;
                     case "1000":
                         System.out.println("Inside 1000");
+                        Media hitTwo8 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_9.wav").toURI().toString());
+                        playSound(hitTwo8);                        
                         break;
                     case "1001":
                         System.out.println("Inside 1001");
+                        Media hitTwo9 = new Media(new File("C:\\Users\\Joseph\\Documents\\"
+                                + "NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_10.wav").toURI().toString());
+                        playSound(hitTwo9);                        
                         break;
                     case "1010":
                         System.out.println("Inside 1010");
+                        Media hitTwo10 = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay"
+                                + "\\audio\\APiano01\\AI-APiano01 1.wav").toURI().toString());
+                        playSound(hitTwo10);                        
                         break;
                     case "1011":
                         System.out.println("Inside 1011");
+                        Media hitTwo11 = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay"
+                                + "\\audio\\APiano01\\AI-APiano01 2.wav").toURI().toString());
+                        playSound(hitTwo11);                        
                         break;
                     case "1101":
                         System.out.println("Inside 1101");
+                        Media hitTwo12 = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay"
+                                + "\\audio\\APiano01\\AI-APiano01 3.wav").toURI().toString());
+                        playSound(hitTwo12);                        
                         break;
                     case "1100":
                         System.out.println("Inside 1100");
+                        Media hitTwo13 = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay"
+                                + "\\audio\\APiano01\\AI-APiano01 4.wav").toURI().toString());
+                        playSound(hitTwo13);                        
                         break;
                     case "1110":
                         System.out.println("Inside 1110");
+                        Media hitTwo14 = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay"
+                                + "\\audio\\APiano01\\AI-APiano01 5.wav").toURI().toString());
+                        playSound(hitTwo14);                        
                         break;
                     case "1111":
                         System.out.println("Inside 1111");
+                        Media hitTwo15 = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay"
+                                + "\\audio\\APiano01\\AI-APiano01 6.wav").toURI().toString());
+                        playSound(hitTwo15);                        
                         break;
                     default:
                         System.out.println("Something went wrong");
                         break;
 
                 }
-            }            
+            }
         } else {
             System.out.println("No input");
         }
@@ -288,7 +381,8 @@ public class BinaryConverter {
 
         return list;
     }
-    private static ArrayList<String> breakFourBits(ArrayList<Integer> array){
+
+    private static ArrayList<String> breakFourBits(ArrayList<Integer> array) {
         ArrayList<String> list = new ArrayList<>();
         Iterator<Integer> it = array.iterator();
         while (it.hasNext()) {
@@ -296,14 +390,15 @@ public class BinaryConverter {
             Integer elementTwo = it.next();
             Integer elementThree = it.next();
             Integer elementFour = it.next();
-            
-            list.add(String.valueOf(element + "" + elementTwo+""+elementThree+""+elementFour));
+
+            list.add(String.valueOf(element + "" + elementTwo + "" + elementThree + "" + elementFour));
         }
         //This will play for the first one
 
         return list;
     }
-    private static ArrayList<String> breakThreeBits(ArrayList<Integer> array){
+
+    private static ArrayList<String> breakThreeBits(ArrayList<Integer> array) {
         ArrayList<String> list = new ArrayList<>();
         Iterator<Integer> it = array.iterator();
         while (it.hasNext()) {
@@ -311,12 +406,38 @@ public class BinaryConverter {
             Integer elementTwo = it.next();
             Integer elementThree = it.next();
 //            Integer elementFour = it.next();
-            
-            list.add(String.valueOf(element + "" + elementTwo+""+elementThree));
+
+            list.add(String.valueOf(element + "" + elementTwo + "" + elementThree));
         }
         //This will play for the first one
 
         return list;
+    }
+
+    public static void clearArray() {
+        binary.clear();
+    }
+    /**
+     * This will play the sound
+     * @param hitTwo takes the media depending on track to play
+     */
+    private static void playSound(Media hitTwo) {
+        System.out.println("Inside play");
+        MediaPlayer mediaPlayerTwo = new MediaPlayer(hitTwo);
+        new Timeline(new KeyFrame(
+                Duration.millis(2500),
+                ae -> {
+                    Timer timer = new Timer();
+                    for(int i =0; i < 1000000000; i+=1){
+                    }
+                    mediaPlayerTwo.rateProperty().setValue(3);
+                    mediaPlayerTwo.play();
+        System.out.println("Inside the play play");
+                    
+                }
+        ))
+                .play();
+
     }
     //private int breakFourBits(ArrayList<Integer> array){
     //}

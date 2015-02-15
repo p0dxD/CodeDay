@@ -52,6 +52,7 @@ private static String musicPath = "file: ../../audio/";
             clickSend(tf, tfResult);
             System.out.println("Size: "+getBinaryValues().size());
             BinaryConverter.split(getBinaryValues());
+            BinaryConverter.clearArray();
         });
         tfResult.setText(getBinaryValues().toString());
         Scene scene = new Scene(setUpGui(), 270, 240);
@@ -78,6 +79,7 @@ private static String musicPath = "file: ../../audio/";
         tfResult.setText(getBinaryValues().toString());
         ones.setText("Ones: " + getCountOnes());
         zeros.setText("Zeros: " + getCountZeros());
+        
         //System.out.println("\nOnes: " + getCountOnes());
         //System.out.println("\nZeros: " + getCountZeros());
     }
@@ -86,7 +88,7 @@ private static String musicPath = "file: ../../audio/";
      * @return the pane with all the setup
      */
     public BorderPane setUpGui() {
-        testMusic();
+//        testMusic();
         GridPane grid = new GridPane();
         BorderPane pane = new BorderPane();
         //TextArea test = new TextArea("This is a test");/////////////////////////////////////////////////////////
@@ -129,40 +131,41 @@ private static String musicPath = "file: ../../audio/";
         tfResult.setWrapText(true);
         return pane;
     }
+    
     /**
      * This method just searches a path and plays a song
      */
-public void testMusic(){
-        //AudioClip hit = new AudioClip(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
-        //AudioClip hitTwo = new AudioClip(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav").toURI().toString());
-        Media hitTwo = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav").toURI().toString());
-        Media hit = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
-        //MediaPlayer mediaPlayer = new MediaPlayer(hit);
-        MediaPlayer mediaPlayerTwo = new MediaPlayer(hitTwo);
-        MediaPlayer mediaPlayer = new MediaPlayer(hitTwo);
-        int count = 0;
-        //while( count < 10){
-        //count++;
-        mediaPlayerTwo.rateProperty().setValue(3);
-        mediaPlayerTwo.play();
-
-       new Timeline(new KeyFrame(
-        Duration.millis(1500),
-        ae -> {
-            //.rateProperty().setValue(8);
-            mediaPlayer.play();
-        }
-       ))
-    .play();
-       
-           // hitTwo.play();
-        
-        
-        //mediaPlayerTwo.play();
-        
-        //}
-        //mediaPlayer.stop();
-}
+//public void testMusic(){
+//        //AudioClip hit = new AudioClip(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
+//        //AudioClip hitTwo = new AudioClip(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav").toURI().toString());
+//        Media hitTwo = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_2.wav").toURI().toString());
+//        Media hit = new Media(new File("C:\\Users\\Joseph\\Documents\\NetBeansProjects\\CodeDay\\audio\\VoicePiano\\64Voice_1.wav").toURI().toString());
+//        //MediaPlayer mediaPlayer = new MediaPlayer(hit);
+//        MediaPlayer mediaPlayerTwo = new MediaPlayer(hitTwo);
+//        MediaPlayer mediaPlayer = new MediaPlayer(hitTwo);
+//        int count = 0;
+//        //while( count < 10){
+//        //count++;
+//        mediaPlayerTwo.rateProperty().setValue(3);
+//        mediaPlayerTwo.play();
+//
+//       new Timeline(new KeyFrame(
+//        Duration.millis(1500),
+//        ae -> {
+//            //.rateProperty().setValue(8);
+//            mediaPlayer.play();
+//        }
+//       ))
+//    .play();
+//       
+//           // hitTwo.play();
+//        
+//        
+//        //mediaPlayerTwo.play();
+//        
+//        //}
+//        //mediaPlayer.stop();
+//}
     /**
      * @param args the command line arguments
      */
